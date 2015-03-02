@@ -221,7 +221,7 @@ void wpa_supplicant_req_auth_timeout(struct wpa_supplicant *wpa_s,
 	wpa_dbg(wpa_s, MSG_DEBUG, "Setting authentication timeout: %d sec "
 		"%d usec", sec, usec);
 	eloop_cancel_timeout(wpa_supplicant_timeout, wpa_s, NULL);
-	eloop_register_timeout(sec, usec, wpa_supplicant_timeout, wpa_s, NULL);
+	//eloop_register_timeout(sec, usec, wpa_supplicant_timeout, wpa_s, NULL);
 }
 
 
@@ -2511,6 +2511,7 @@ struct wpa_ssid * wpa_supplicant_get_ssid(struct wpa_supplicant *wpa_s)
 		(wpa_s->drv_flags & WPA_DRIVER_FLAGS_WIRED);
 
 	entry = wpa_s->conf->ssid;
+	return entry;
 	while (entry) {
 		if (!wpas_network_disabled(wpa_s, entry) &&
 		    ((ssid_len == entry->ssid_len &&
